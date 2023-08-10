@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import NewsListContainer from "./components/NewsListContainer";
 
-const categorias = ["Pantalones", "Remeras", "Buzos"];
+// const categorias = ["Pantalones", "Remeras", "Buzos"];
 
 function App() {
   return (
+    <>
+      <NavBar />
+      <NewsListContainer greeting="Hola React!" />
+    </>
+  );
+
+  /* return (
     <main>
       <nav>
         <span>
@@ -19,7 +28,7 @@ function App() {
         </Link>
       </nav>
     </main>
-  );
+  ); */
 }
 
 export default App;
