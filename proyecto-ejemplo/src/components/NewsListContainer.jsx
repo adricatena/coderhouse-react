@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import NewsList from "./NewsList";
 import Loader from "./Loader";
-import NewsDetailContainer from "./NewsDetailContainer";
 
 function NewsListContainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +29,6 @@ function NewsListContainer() {
       }}
     >
       <NewsList newsList={news} />
-      {/* <NewsDetailContainer newsId={37080634} /> */}
     </main>
   );
 }

@@ -24,13 +24,22 @@ function NewsDetailContainer({ newsId }) {
   if (isLoading) return <Loader />;
 
   return (
-    <>
+    <main
+      style={{
+        padding: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "2rem",
+      }}
+    >
       <NewsDetail
         title={notice.title}
         author={notice.author}
         createdAt={notice.createdAt}
       />
-    </>
+    </main>
   );
 }
 
