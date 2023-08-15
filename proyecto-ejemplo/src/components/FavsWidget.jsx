@@ -1,6 +1,12 @@
+import { useContext } from "react";
 import Badge from "react-bootstrap/Badge";
+import { FavsContext } from "../context/favsContext";
 
 function FavsWidget() {
+  const favsContext = useContext(FavsContext);
+
+  console.log({ favsContext });
+
   return (
     <span>
       <svg
@@ -18,7 +24,7 @@ function FavsWidget() {
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
       </svg>
-      <Badge>3</Badge>
+      <Badge>{favsContext.favsQuantity}</Badge>
     </span>
   );
 }

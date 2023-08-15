@@ -4,16 +4,18 @@ import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
 import { createContext, useState } from "react";
 import Button from "react-bootstrap/Button";
+import FavsProvider, { FavsContext } from "./context/favsContext";
 
 export const ThemeContext = createContext();
 
-console.log({ ThemeContext });
+// console.log({ ThemeContext });
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <ThemeContext.Provider value={false}>
+    // <FavsContext.Provider value={[]}>
+    <FavsProvider>
       <BrowserRouter>
         <Routes>
           <Route
@@ -48,7 +50,8 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </ThemeContext.Provider>
+    </FavsProvider>
+    // </FavsContext.Provider>
   );
 }
 

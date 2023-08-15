@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import heart from "../assets/heart.svg";
 import heartFill from "../assets/heart-fill.svg";
+import { FavsContext } from "../context/favsContext";
 
 function FavsToggle() {
+  const favsContext = useContext(FavsContext);
+  console.log({ favsContext });
   const [isFav, setIsFav] = useState(false);
 
   const handleClick = () => {
+    if (isFav) {
+      favsContext.decrementFavsQuantity();
+    } else {
+      favsContext.incrementFavsQuantity();
+    }
     setIsFav(!isFav);
   };
 

@@ -21,7 +21,7 @@ function NavBar() {
           gap: "2rem",
         }}
       >
-        <Link to="/" reloadDocument>
+        <Link to="/">
           <span
             style={{
               display: "flex",
@@ -32,16 +32,16 @@ function NavBar() {
             <h3>Nerdticias!</h3>
           </span>
         </Link>
-        <Link to="/category/react" reloadDocument>
+        <Link to="/category/react">
           <Button>React</Button>
         </Link>
-        <Link to="/category/angular" reloadDocument>
+        <Link to="/category/angular">
           <Button>Angular</Button>
         </Link>
-        <Link to="/category/vue" reloadDocument>
+        <Link to="/category/vue">
           <Button>Vue</Button>
         </Link>
-        <Link to="/category/svelte" reloadDocument>
+        <Link to="/category/svelte">
           <Button>Svelte</Button>
         </Link>
       </nav>
