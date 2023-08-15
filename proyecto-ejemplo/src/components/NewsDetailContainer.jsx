@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import NewsDetail from "./NewsDetail";
+import { useParams } from "react-router-dom";
 
-function NewsDetailContainer({ newsId }) {
+function NewsDetailContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const [notice, setNotice] = useState({});
+  const params = useParams();
 
   useEffect(() => {
-    fetch(`https://hn.algolia.com/api/v1/items/${newsId}`)
+    fetch(`https://hn.algolia.com/api/v1/items/${params.id}`)
       .then((response) => {
         if (response.ok) return response.json();
         throw new Error("No se encontro una noticia con ese ID");

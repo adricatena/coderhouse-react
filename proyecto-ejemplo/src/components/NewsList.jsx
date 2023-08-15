@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import News from "./News";
 
 function NewsList({ newsList = [] }) {
@@ -14,12 +15,13 @@ function NewsList({ newsList = [] }) {
       {newsList.map((notice) => {
         const createdAt = new Date(notice.created_at);
         return (
-          <News
-            key={notice.objectID}
-            title={notice.title}
-            author={notice.author}
-            createdAt={createdAt.toISOString()}
-          />
+          <Link key={notice.objectID} to={`/news/${notice.objectID}`}>
+            <News
+              title={notice.title}
+              author={notice.author}
+              createdAt={createdAt.toISOString()}
+            />
+          </Link>
         );
       })}
     </section>

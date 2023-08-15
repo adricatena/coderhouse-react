@@ -1,7 +1,7 @@
 import reactLogo from "../assets/react.svg";
-
 import Button from "react-bootstrap/Button";
 import FavsWidget from "./FavsWidget";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -21,19 +21,29 @@ function NavBar() {
           gap: "2rem",
         }}
       >
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <img alt="Brand" src={reactLogo} />
-          <h3>Nerdticias!</h3>
-        </span>
-        <Button>React</Button>
-        <Button>Angular</Button>
-        <Button>Vue</Button>
-        <Button>Svelte</Button>
+        <Link to="/" reloadDocument>
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img alt="Brand" src={reactLogo} />
+            <h3>Nerdticias!</h3>
+          </span>
+        </Link>
+        <Link to="/category/react" reloadDocument>
+          <Button>React</Button>
+        </Link>
+        <Link to="/category/angular" reloadDocument>
+          <Button>Angular</Button>
+        </Link>
+        <Link to="/category/vue" reloadDocument>
+          <Button>Vue</Button>
+        </Link>
+        <Link to="/category/svelte" reloadDocument>
+          <Button>Svelte</Button>
+        </Link>
       </nav>
       <FavsWidget />
     </header>
