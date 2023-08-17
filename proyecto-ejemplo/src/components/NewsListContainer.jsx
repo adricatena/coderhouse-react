@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import NewsList from "./NewsList";
-import Loader from "./Loader";
 import { useParams } from "react-router-dom";
+import NewsList from "./NewsList";
 
 function NewsListContainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,16 +23,68 @@ function NewsListContainer() {
         setNews(result.hits);
       })
       .catch((error) => console.error(error))
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setTimeout(() => setIsLoading(false), 2000);
+      });
   }, []);
 
-  if (isLoading) return <Loader />;
-
-  return (
+  /* const Render = isLoading ? (
+    <Loader />
+  ) : (
     <main
       style={{
         padding: "1rem",
       }}
+    >
+      <NewsList newsList={news} />
+    </main>
+  );
+
+  return Render; */
+
+  /* return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <main
+          style={{
+            padding: "1rem",
+          }}
+        >
+          <NewsList newsList={news} />
+        </main>
+      )}
+    </>
+  ); */
+
+  /* return (
+    <>
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <main
+          style={{
+            padding: "1rem",
+          }}
+        >
+          <NewsList newsList={news} />
+        </main>
+      )}
+    </>
+  ); */
+
+  // if (isLoading) return <Loader />;
+
+  return (
+    <main
+      className={`show ${isLoading ? "hide" : ""}`}
+      /* style={
+        isLoading
+          ? { display: "none" }
+          : {
+              padding: "1rem",
+            }
+      } */
     >
       <NewsList newsList={news} />
     </main>

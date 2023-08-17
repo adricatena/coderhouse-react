@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import News from "./News";
 
 function NewsList({ newsList = [] }) {
+  useEffect(() => {
+    console.log("Se monto NewsList");
+    return () => {
+      console.log("Se desmonto NewsList");
+    };
+  }, []);
+
   return (
     <section
       style={{

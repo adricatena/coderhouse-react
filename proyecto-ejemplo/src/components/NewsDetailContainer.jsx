@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import NewsDetail from "./NewsDetail";
-import { useParams } from "react-router-dom";
 
 function NewsDetailContainer() {
   const [isLoading, setIsLoading] = useState(true);

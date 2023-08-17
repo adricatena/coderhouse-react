@@ -2,3 +2,11 @@ h3,
 h4 {
   margin: 0;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  padding: 1rem;
+}
