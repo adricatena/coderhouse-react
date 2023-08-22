@@ -1,10 +1,12 @@
+import { doc, getDoc } from "firebase/firestore";
+import { createContext, useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
-import { createContext, useState } from "react";
-import Button from "react-bootstrap/Button";
-import FavsProvider, { FavsContext } from "./context/favsContext";
+import FavsProvider from "./context/favsContext";
+import { firestore } from "./firebase/client";
 
 export const ThemeContext = createContext();
 
@@ -12,6 +14,18 @@ export const ThemeContext = createContext();
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const docRef = doc(firestore, "items", "ihUgx57adJA2rOnUIYKK");
+    getDoc(docRef).then((snapshot) => {
+      console.log({ snapshot });
+      if (snapshot.exists()) {
+        console.log("La informacion del documento es: ", snapshot.data());
+      } else {
+        console.log("El documento no existe");
+      }
+    });
+  }, []);
 
   return (
     // <FavsContext.Provider value={[]}>
