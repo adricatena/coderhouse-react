@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import News from "./News";
 
@@ -36,4 +36,6 @@ function NewsList({ newsList = [] }) {
   );
 }
 
-export default NewsList;
+const NewsListMemo = memo(NewsList);
+
+export default NewsListMemo;

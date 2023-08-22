@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
 import NewsList from "./NewsList";
 
 function NewsListContainer() {
@@ -73,18 +74,13 @@ function NewsListContainer() {
     </>
   ); */
 
-  // if (isLoading) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <main
-      className={`show ${isLoading ? "hide" : ""}`}
-      /* style={
-        isLoading
-          ? { display: "none" }
-          : {
-              padding: "1rem",
-            }
-      } */
+      style={{
+        padding: "1rem",
+      }}
     >
       <NewsList newsList={news} />
     </main>
