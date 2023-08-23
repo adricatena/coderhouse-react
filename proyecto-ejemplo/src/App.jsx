@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,7 +16,16 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const docRef = doc(firestore, "items", "ihUgx57adJA2rOnUIYKK");
+    const collectionRef = collection(firestore, "items");
+    getDocs(collectionRef)
+      .then((snapshot) => {
+        console.log(snapshot);
+        snapshot.forEach((doc) => console.log(doc.data()));
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {});
+
+    /* const docRef = doc(firestore, "items", "ihUgx57adJA2rOnUIYKK");
     getDoc(docRef).then((snapshot) => {
       console.log({ snapshot });
       if (snapshot.exists()) {
@@ -24,7 +33,7 @@ function App() {
       } else {
         console.log("El documento no existe");
       }
-    });
+    }); */
   }, []);
 
   return (
