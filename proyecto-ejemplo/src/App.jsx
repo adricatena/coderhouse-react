@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,14 +16,23 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const collectionRef = collection(firestore, "items");
+    const q = query(
+      collection(firestore, "items"),
+      where("price", ">", 50),
+      orderBy("price", "desc")
+    );
+    getDocs(q).then((snapshot) => {
+      console.log(snapshot);
+      snapshot.forEach((doc) => console.log(doc.data()));
+    });
+    /* const collectionRef = collection(firestore, "items");
     getDocs(collectionRef)
       .then((snapshot) => {
         console.log(snapshot);
         snapshot.forEach((doc) => console.log(doc.data()));
       })
       .catch((error) => console.error(error))
-      .finally(() => {});
+      .finally(() => {}); */
 
     /* const docRef = doc(firestore, "items", "ihUgx57adJA2rOnUIYKK");
     getDoc(docRef).then((snapshot) => {
