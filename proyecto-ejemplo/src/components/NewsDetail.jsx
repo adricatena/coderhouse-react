@@ -3,8 +3,9 @@ import Card from "react-bootstrap/Card";
 import { useFavsContext } from "../context/favsContext";
 import FavsToggle from "./FavsToggle";
 
-function NewsDetail({ createdAt, title, author }) {
-  const { decrementFavsQuantity, incrementFavsQuantity } = useFavsContext();
+function NewsDetail({ createdAt, title, author, id }) {
+  const { decrementFavsQuantity, incrementFavsQuantity, addFavToList } =
+    useFavsContext();
   const [isFav, setIsFav] = useState(false);
 
   const handleClick = () => {
@@ -12,6 +13,7 @@ function NewsDetail({ createdAt, title, author }) {
       decrementFavsQuantity();
     } else {
       incrementFavsQuantity();
+      addFavToList({ createdAt, title, author, id });
     }
     setIsFav(!isFav);
   };

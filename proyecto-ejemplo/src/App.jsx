@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Favs from "./components/Favs";
 import NavBar from "./components/NavBar";
 import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
@@ -33,6 +34,15 @@ function App() {
               <>
                 <NavBar />
                 <NewsDetailContainer />
+              </>
+            }
+          />
+          <Route
+            path="/favs"
+            element={
+              <>
+                <NavBar />
+                <Favs />
               </>
             }
           />
