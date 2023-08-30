@@ -2,19 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
-import { createContext, useState } from "react";
-import Button from "react-bootstrap/Button";
-import FavsProvider, { FavsContext } from "./context/favsContext";
-
-export const ThemeContext = createContext();
-
-// console.log({ ThemeContext });
+import FavsProvider from "./context/favsContext";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   return (
-    // <FavsContext.Provider value={[]}>
     <FavsProvider>
       <BrowserRouter>
         <Routes>
@@ -23,9 +14,6 @@ function App() {
             element={
               <>
                 <NavBar />
-                <Button onClick={() => setIsDarkMode(!isDarkMode)}>
-                  Dark/light mode
-                </Button>
                 <NewsListContainer />
               </>
             }
@@ -51,7 +39,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </FavsProvider>
-    // </FavsContext.Provider>
   );
 }
 
